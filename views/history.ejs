@@ -1,0 +1,31 @@
+<%- include("header", {title: title}); %>
+
+<div class="container">
+    <h3>History</h3>
+    <!-- <pre><%= JSON.stringify(data, null, 4) %></pre> -->    
+    <table class="tb">
+        <tr>
+            <th>ID</th>
+            <th>Deposit</th>
+            <th>Withdrawal</th>
+            <th>Transfer</th>
+            <th>Amount</th>
+            <th>Balance</th>
+        </tr>
+    <% for (const row of data) { %>
+        <tr>
+            <td><%= row.id %></td>
+            <td><%= row.deposit %></td>
+            <td><%= row.withdrawal %></td>
+            <td><%= row.transfer %></td>
+            <td><%= row.amount %></td>
+            <td><%= row.balance %></td>
+        </tr>
+    <% }; %>
+    </table>
+</div>
+  
+</body>
+</html>
+
+

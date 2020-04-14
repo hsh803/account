@@ -1,0 +1,39 @@
+<%- include("header", {title: title}); %>
+
+<!-- <pre><%= JSON.stringify(data, null, 4) %></pre>    -->
+<!-- <pre><%= JSON.stringify(data1, null, 4) %></pre>     -->
+
+<div class="container">
+    <h3><%= title %> money</h3>
+    <form class="form1" onsubmit="balanceControl()" method="post" action="/account/<%= title %>/<%= id %>">
+        
+        <div class="box">
+            <label class="transferLabel" for="id">Sender: </label>        
+            <div class="transferId" ><%= id %></div>
+        </div>
+
+        <div class="box">
+            <label class="transferLabel" for="balance">Balance: </label>        
+            <div class="transferBalance"><%= data1.balance %></div>
+        </div>
+
+        <div class="box">
+            <label class="transferLabel" for="receiver">Receiver: </label>
+            <select name="receiver" id="receiver">
+                <% for (const row of data) { %>
+                <option value="<%= row.id %>"><%= row.id %></option>
+                <% };%>
+            </select>
+        </div>
+
+        <div class="box">
+            <label for="amount">Amount</label>
+            <input type="number" min="1" step=".01" id="amount" name="amount">
+        </div>
+
+        <input type="submit" id="btn" name="ok" value="OK">
+    </form>
+</div>
+
+</body>
+</html>

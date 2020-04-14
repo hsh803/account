@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "project",
+    "password": "pass",
+    "database": "account",
+    "multipleStatements": true
+}

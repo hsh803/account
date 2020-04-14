@@ -1,0 +1,26 @@
+<%- include("header", {title: title}); %>
+
+<div class="container">
+    <h3>Create account</h3>
+    <form class="form1" onsubmit="createControl()" method="post" action="/">
+        <div class="box">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+        </div>
+
+        <div class="box">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div class="box">
+            <label for="deposit">Deposit</label>
+            <input type="number" min="0" step=".01" id="deposit" name="deposit">
+        </div>
+
+        <input type="submit" id="btn" name="create" value="Create">
+    </form>
+</div>
+
+</body>
+</html>

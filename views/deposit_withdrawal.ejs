@@ -1,0 +1,16 @@
+<%- include("header", {title: title}); %>
+
+<div class="container">
+    <h3 id="title"><%= title %></h3>
+    <form class="form1" onsubmit="amountControl()" method="post" action="/account/<%= title %>/<%= id %>">
+        <div class="box">
+            <label for="amount">Amount</label>
+            <input type="number" min="1" step=".01" id="amount" name="amount">
+        </div>
+
+        <input type="submit" id="btn" name="ok" value="OK">
+    </form>
+</div>
+
+</body>
+</html>

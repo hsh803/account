@@ -1,0 +1,37 @@
+<%- include("header", {title: title}); %>
+<!-- <pre><%= JSON.stringify(data, null, 4) %></pre> -->    
+
+<div class="container">
+    <h3>Account list</h3>
+    <table class="tb">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Account opened</th>
+            <th>Option</th>
+            <th>History</th>
+            <th>Close</th>
+        </tr>
+    <% for (const row of data) { %>
+        <tr>
+            <td><%= row.id %></td>
+            <td><%= row.name %></td>
+            <td><%= row.balance %></td>
+            <td><%= row.open %></td>
+            <td>
+                <a href="/account/deposit/<%= row.id %>">deposit</a>
+                <a href="/account/withdrawal/<%= row.id %>">withdrawal</a>
+                <a href="/account/transfer/<%= row.id %>">transfer</a>
+            </td>
+            <td><a href="/account/history/<%= row.id %>">history</a></td>
+            <td><a onclick="return close()" href="/account/close/<%= row.id %>">close</a></td>
+        </tr>
+    <% }; %>
+    </table>
+</div>
+  
+</body>
+</html>
+
+
