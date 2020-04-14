@@ -15,7 +15,7 @@ create table if not exists history
 id VARCHAR(50) NOT NULL,
 deposit TIMESTAMP NULL,
 withdrawal TIMESTAMP NULL,
-transfer TIMESTAMP NULL,
+transfer VARCHAR(100) NULL,
 amount DECIMAL(5, 2),
 balance DECIMAL(5, 2),
 FOREIGN KEY (id) REFERENCES account(id)
@@ -105,7 +105,7 @@ h_id VARCHAR(50)
 )
 BEGIN
 
-select id, DATE_FORMAT(deposit, '%Y-%m-%d %T') as deposit, DATE_FORMAT(withdrawal, '%Y-%m-%d %T') as withdrawal, DATE_FORMAT(transfer, '%Y-%m-%d %T') as transfer, amount, balance from history WHERE id = h_id;
+select id, DATE_FORMAT(deposit, '%Y-%m-%d %T') as deposit, DATE_FORMAT(withdrawal, '%Y-%m-%d %T') as withdrawal, transfer, amount, balance from history WHERE id = h_id;
 
 END
 ;;
@@ -155,9 +155,9 @@ ELSE
 UPDATE account SET balance = balance - t_amount WHERE id = t_id;
 UPDATE account SET balance = balance + t_amount WHERE id = t_receiver;
 
-INSERT INTO history (id, withdrawal, transfer, amount, balance) VALUES (t_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, t_amount, (select balance from account where id = t_id));
+INSERT INTO history (id, withdrawal, transfer, amount, balance) VALUES (t_id, CURRENT_TIMESTAMP, CONCAT(DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %T'), " (", t_id, "/", t_receiver, " )"), t_amount, (select balance from account where id = t_id));
 
-INSERT INTO history (id, deposit, transfer, amount, balance) VALUES (t_receiver, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, t_amount, (select balance from account where id = t_receiver)); 
+INSERT INTO history (id, deposit, transfer, amount, balance) VALUES (t_receiver, CURRENT_TIMESTAMP, CONCAT(DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %T'), " (", t_id, "/", t_receiver, " )"), t_amount, (select balance from account where id = t_receiver)); 
 
 COMMIT ;
 END IF ;
