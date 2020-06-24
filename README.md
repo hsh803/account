@@ -1,7 +1,7 @@
 # Account
 
-1. Languages: HTML, CSS, Javascript
-2. Techniques: Node.js, Express
+1. Languages: HTML, CSS, Javascript, SQL
+2. Techniques: Node.js, Express, MySQL
 2. Tools: Visual Design Code
 3. Description: This application is programmed to create, read, update, delete the data from the database(MySQL) connected to web server.
 In the app, you can create accounts and deposit, make withdrawal, transfer money. You can also see ㅁaccount history.
